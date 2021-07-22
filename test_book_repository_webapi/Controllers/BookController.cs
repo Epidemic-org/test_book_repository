@@ -11,5 +11,6 @@ namespace test_book_repository_webapi.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
+
     }
 }

@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using test_book_repository_webapi.Contracts;
+using test_book_repository_webapi.Models;
+using test_book_repository_webapi.Repositories;
 
 namespace test_book_repository_webapi
 {
@@ -29,6 +33,12 @@ namespace test_book_repository_webapi
             services.AddSwaggerGen(c => {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "test_book_repository_webapi", Version = "v1" });
             });
+
+            services.AddDbContext<BookStoreTestContext>(options => {
+                options.UseSqlServer("Data Source=.;Initial Catalog=EshopApi;Integrated Security=True;");
+            });
+
+            services.AddTransient<IGenericRepository<Book>, GenericRepository<Book>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
