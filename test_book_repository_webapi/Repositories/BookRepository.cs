@@ -9,6 +9,5 @@ namespace test_book_repository_webapi.Repositories
 {
     public class BookRepository
     {
-
     }
 }

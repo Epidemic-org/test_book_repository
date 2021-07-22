@@ -10,8 +10,10 @@ namespace test_book_repository_webapi.Context
 {
     public class UnitOfWork
     {
+        
+
         private IGenericRepository<Book> _gnrBookRepository;
-        public IGenericRepository<Book> GenericRepository {
+        public IGenericRepository<Book> GnrBookRepository {
             get {
                 if (_gnrBookRepository == null) {
                     _gnrBookRepository = new GenericRepository<Book>();
