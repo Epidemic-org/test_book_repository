@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 
 namespace test_book_repository_webapi.Contracts
@@ -13,6 +14,6 @@ namespace test_book_repository_webapi.Contracts
         Task<T> Delete(int id);
 
         Task<T> Add(T entity);
-        Task<T> IsExists(int id);
+        Task<bool> IsExists(int id, Expression<Func<T, bool>> predicate = null);
     }
 }
