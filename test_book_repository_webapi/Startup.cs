@@ -35,7 +35,7 @@ namespace test_book_repository_webapi
             });
 
             services.AddDbContext<BookStoreTestContext>(options => {
-                options.UseSqlServer("Data Source=.;Initial Catalog=EshopApi;Integrated Security=True;");
+                options.UseSqlServer("Data Source=.;Initial Catalog=BookStoreTest;Integrated Security=True;");
             });
 
             services.AddTransient<IGenericRepository<Book>, GenericRepository<Book>>();
