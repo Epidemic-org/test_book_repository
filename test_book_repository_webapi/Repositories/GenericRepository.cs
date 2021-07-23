@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using test_book_repository_webapi.Context;
 using test_book_repository_webapi.Contracts;
 using test_book_repository_webapi.Models;
 
@@ -13,9 +14,10 @@ namespace test_book_repository_webapi.Repositories
     {
         private readonly BookStoreTestContext _db;
         private readonly DbSet<T> _dbSet;
-        public GenericRepository(BookStoreTestContext bookStoreTestContext)
+        private readonly UnitOfWork _uow;
+        public GenericRepository(UnitOfWork unitOfWork)
         {
-            _db = bookStoreTestContext;
+            _uow = unitOfWork;
             _dbSet = _db.Set<T>();
         }
         public virtual async Task<T> Add(T entity)

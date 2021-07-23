@@ -8,7 +8,7 @@ using test_book_repository_webapi.Repositories;
 
 namespace test_book_repository_webapi.Context
 {
-    public class UnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
         BookStoreTestContext _db;
         public UnitOfWork(BookStoreTestContext db) {
@@ -23,6 +23,11 @@ namespace test_book_repository_webapi.Context
                 }
                 return _gnrBookRepository;
             }
+        }
+
+        public void Dispose()
+        {
+            _db.Dispose();
         }
     }
 }
