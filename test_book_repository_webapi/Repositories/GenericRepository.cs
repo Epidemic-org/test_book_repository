@@ -14,10 +14,9 @@ namespace test_book_repository_webapi.Repositories
     {
         private readonly BookStoreTestContext _db;
         private readonly DbSet<T> _dbSet;
-        private readonly UnitOfWork _uow;
-        public GenericRepository(UnitOfWork unitOfWork)
+        public GenericRepository(BookStoreTestContext db)
         {
-            _uow = unitOfWork;
+            _db = db;
             _dbSet = _db.Set<T>();
         }
         public virtual async Task<T> Add(T entity)

@@ -7,8 +7,8 @@ using test_book_repository_webapi.Models;
 
 namespace test_book_repository_webapi.Context
 {
-    interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork : IDisposable
     {
-        public IGenericRepository<Book> GnrBookRepository { get; }
+        public IGenericRepository<Book> GnrBookRepository { get; }        
     }
 }

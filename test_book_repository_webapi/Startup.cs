@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using test_book_repository_webapi.Context;
 using test_book_repository_webapi.Contracts;
 using test_book_repository_webapi.Models;
 using test_book_repository_webapi.Repositories;
@@ -38,7 +39,7 @@ namespace test_book_repository_webapi
                 options.UseSqlServer("Data Source=.;Initial Catalog=BookStoreTest;Integrated Security=True;");
             });
 
-            services.AddTransient<IGenericRepository<Book>, GenericRepository<Book>>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
