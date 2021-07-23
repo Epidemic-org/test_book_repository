@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using test_book_repository_webapi.Context;
 using test_book_repository_webapi.Contracts;
 using test_book_repository_webapi.Models;
 
@@ -13,14 +14,14 @@ namespace test_book_repository_webapi.Controllers
     [ApiController]
     public class BookController : ControllerBase
     {
-        IGenericRepository<Book> _db;
-        public BookController(IGenericRepository<Book> db) {
+        IUnitOfWork _db;
+        public BookController(IUnitOfWork db) {
             _db = db;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetBooks() {
-            return new ObjectResult(_db.GetAll().ToList());
+            return new ObjectResult(_db.GnrBookRepository.GetAll().ToList());
         }
 
         [HttpGet("{id}")]
@@ -31,7 +32,7 @@ namespace test_book_repository_webapi.Controllers
 
         [HttpPost]
         public async Task<IActionResult> PostBook(Book book) {
-            await _db.Add(book);
+            await _db.GnrBookRepository.Add(book);
             return Ok();
         }
 
